@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'RestShip_Example', :exclusive => true do
+  pod 'RestShip', :path => '../'
+end
+
+target 'RestShip_Tests', :exclusive => true do
+  pod 'RestShip', :path => '../'
+
+  
+end
