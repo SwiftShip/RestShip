@@ -1,40 +1,21 @@
-#
-# Be sure to run `pod lib lint RestShip.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = "RestShip"
   s.version          = "0.1.0"
-  s.summary          = "A short description of RestShip."
+  s.summary          = "RestShip is a library for let you easily work with RESTFull Web Applications, sitting on top of Alamofire"
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+This library provide a simplify way to access routes to API resources using method chaining and allowing the configuration of requests.
                        DESC
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/RestShip"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/SwiftShip/RestShip"
   s.license          = 'MIT'
-  s.author           = { "iTSangar" => "itsangardev@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/RestShip.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Diogo Jayme" => "diogojme@gmail.com" , "Italo Sangar" => "itsangardev@gmail.com" }
+  s.source           = { :git => "https://github.com/SwiftShip/RestShip.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'RestShip' => ['Pod/Assets/*.png']
-  }
+  s.source_files = 'Source/*'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Alamofire', '~> 3.3'
 end

@@ -1,0 +1,17 @@
+PODS:
+  - Alamofire (3.3.0)
+  - RestShip (0.1.0):
+    - Alamofire (~> 3.3)
+
+DEPENDENCIES:
+  - RestShip (from `../`)
+
+EXTERNAL SOURCES:
+  RestShip:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
+  RestShip: e8a5f0cd6311201cfe56165c37781454ea5fb3d7
+
+COCOAPODS: 0.39.0
