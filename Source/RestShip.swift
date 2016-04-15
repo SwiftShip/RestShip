@@ -45,6 +45,7 @@ public extension RestShip {
     if let req = self.URLrequest {
       let mutableURLRequest = encoding.encode(req, parameters: params).0
       Alamofire.request(mutableURLRequest)
+        .validate()
         .responseJSON { response in
           switch response.result{
           case .Success(let result):
