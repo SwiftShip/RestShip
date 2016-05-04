@@ -23,6 +23,7 @@ pod "RestShip"
 ## Author
 
 iTSangar, itsangardev@gmail.com
+
 diogojme, diogojme@gmail.com
 
 ## License
