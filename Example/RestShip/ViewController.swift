@@ -14,6 +14,18 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let bodyParams = ["username": "teste123", "passsword": "teste123"]
+    
+    RestShip.resource(MainRouter.Singles)
+      .method(.POST)
+      .parameterEncoding(.JSON)
+      .queryParams(bodyParams)
+      .request({ callback in
+        
+        print(callback)
+        
+      })
+    
     RestShip.resource(MainRouter.Features)
       .method(.GET)
       .request({ result in

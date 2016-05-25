@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RestShip"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "RestShip is a library for let you easily work with RESTFull Web Applications, sitting on top of Alamofire"
 
   s.description      = <<-DESC
