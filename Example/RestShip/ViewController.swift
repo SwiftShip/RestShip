@@ -36,6 +36,9 @@ class ViewController: UIViewController {
         case .Error(let error):
           print(error)
           break
+        case .RefreshTokenError:
+          print("Could not refresh oauth token")
+          break
         }
       })
   }

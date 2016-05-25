@@ -174,7 +174,7 @@ public extension RestShip {
               requestSuccess()
             }
             break
-          case .Failure(let error):
+          case .Failure(_):
             callback(Result.RefreshTokenError)
             break
           }

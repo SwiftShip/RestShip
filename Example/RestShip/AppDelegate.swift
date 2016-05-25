@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     
-    RestShip.Configuration.baseURL = "you base URL"
+    RestShip.Configuration.BaseURL = "you base URL"
     
     return true
   }
