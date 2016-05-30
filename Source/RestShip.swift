@@ -96,6 +96,15 @@ public extension RestShip.Configuration {
       }
     }
 
+    public static func clearTokens() {
+      let defaults = NSUserDefaults.standardUserDefaults()
+      defaults.removeObjectForKey(RestShipAccessToken)
+      defaults.removeObjectForKey(RestShipRefreshToken)
+      defaults.removeObjectForKey(RestShipExpireToken)
+      defaults.removeObjectForKey(RestShipTypeToken)
+      defaults.removeObjectForKey(RestShipRefreshURL)
+    }
+
   }
   
   private static func defaultsStringForKey(key: String) -> String {
@@ -119,16 +128,6 @@ public extension RestShip.Configuration {
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setDouble(object, forKey: key)
   }
-  
-  public static func clearToken() {
-    let defaults = NSUserDefaults.standardUserDefaults()
-    defaults.removeObjectForKey(RestShipAccessToken)
-    defaults.removeObjectForKey(RestShipRefreshToken)
-    defaults.removeObjectForKey(RestShipExpireToken)
-    defaults.removeObjectForKey(RestShipTypeToken)
-    defaults.removeObjectForKey(RestShipRefreshURL)
-  }
-  
 }
 
 // MARK: - -
@@ -151,6 +150,8 @@ public extension RestShip {
             break
           }
       }
+      
+      clearOldData()
     }
     
     func refreshTokenBeforeRequest(requestSuccess: () -> Void) {
@@ -187,14 +188,14 @@ public extension RestShip {
     if let request = self.URLrequest {
       
       func addTokenRequest() {
-        request.addValue("\(RestShip.Configuration.Token.TokenType) \(RestShip.Configuration.Token.AccessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("\(RestShip.Configuration.Token.TokenType) \(RestShip.Configuration.Token.AccessToken)", forHTTPHeaderField: "Authorization")
       }
       
       if !RestShip.Configuration.Token.AccessToken.isEmpty {
         assert(RestShip.Configuration.Token.ExpiresIn != 0, "expiresIn of token is 0")
         let dateExpires = NSDate(timeIntervalSince1970: RestShip.Configuration.Token.ExpiresIn)
         
-        if RestShip.isValidDate(dateExpires) {
+        if isValidDate(dateExpires) {
           addTokenRequest()
           resumeRequest(request)
         } else {
@@ -220,6 +221,11 @@ public extension RestShip {
     }
   }
   
+  private static func clearOldData() {
+    RestShip.params = nil
+    RestShip.URLrequest = nil
+    RestShip.encoding = Alamofire.ParameterEncoding.URL
+  }
 }
 
 // MARK: - -
@@ -251,7 +257,7 @@ public extension RestShip {
   }
 
   public static func method(method: RestShip.Method) -> RestShip.Type {
-    assert(URLrequest != nil, "You must call path() before adding method")
+    assert(URLrequest != nil, "You must call resource() before adding method")
     URLrequest?.HTTPMethod = method.rawValue
     return self
   }
