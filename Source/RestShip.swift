@@ -36,7 +36,10 @@ public struct RestShip {
   private static var URLrequest: NSMutableURLRequest?
   private static var encoding = Alamofire.ParameterEncoding.URL
   
-  public struct Configuration {}
+  public struct Configuration {
+    
+    public init() { }
+  }
 }
 
 // MARK: - -
