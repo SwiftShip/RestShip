@@ -24,7 +24,7 @@ pod "RestShip"
 
 iTSangar, itsangardev@gmail.com
 
-diogojme, diogojme@gmail.com
+therealandroid, diogojme@gmail.com
 
 ## License
 
