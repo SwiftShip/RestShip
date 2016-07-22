@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     let bodyParams = ["username": "teste123", "passsword": "teste123"]
     
-    RestShip.resource(MainRouter.Singles)
+    RestShip.resource(MainRouter.Features)
       .method(.POST)
       .parameterEncoding(.JSON)
       .queryParams(bodyParams)
@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         print(callback)
         
       })
+    
+  
     
     RestShip.resource(MainRouter.Features)
       .method(.GET)

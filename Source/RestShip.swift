@@ -35,9 +35,9 @@ public struct RestShip {
   private static var params: [String: AnyObject]?
   private static var URLrequest: NSMutableURLRequest?
   private static var encoding = Alamofire.ParameterEncoding.URL
+  private static var RequestOnURL: String?
   
   public struct Configuration {
-    
     public init() { }
   }
 }
@@ -186,7 +186,6 @@ public extension RestShip {
     }
     
     assert(URLrequest != nil, "URLrequest cannot be nil")
-    assert(!RestShip.Configuration.BaseURL.isEmpty, "baseURL cannot be empty")
     
     if let request = self.URLrequest {
       
@@ -228,6 +227,17 @@ public extension RestShip {
     RestShip.params = nil
     RestShip.URLrequest = nil
     RestShip.encoding = Alamofire.ParameterEncoding.URL
+    RestShip.RequestOnURL = nil
+  }
+  
+  private static func URL() -> NSURL {
+    if RestShip.RequestOnURL != nil && !RestShip.RequestOnURL!.isEmpty {
+      return NSURL(string: RestShip.RequestOnURL!)!
+    } else if !RestShip.Configuration.BaseURL.isEmpty {
+      return NSURL(string: RestShip.Configuration.BaseURL)!
+    }
+    assertionFailure("you need set baseURL or call withURL() method")
+    return NSURL()
   }
 }
 
@@ -279,9 +289,16 @@ public extension RestShip {
 
 public extension RestShip {
   public static func resource(resource: RestShipResource) -> RestShip.Type {
-    let URL = NSURL(string: RestShip.Configuration.BaseURL)!
-    URLrequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(resource.name))
+    URLrequest = NSMutableURLRequest(URL: RestShip.URL().URLByAppendingPathComponent(resource.name))
     URLrequest?.timeoutInterval = RestShip.Configuration.Timeout
+    return self
+  }
+}
+
+public typealias EspecificURL = RestShip
+public extension EspecificURL {
+  public static func fromURL(path: String) -> RestShip.Type {
+    RestShip.RequestOnURL = path
     return self
   }
 }

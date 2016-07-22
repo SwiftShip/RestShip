@@ -12,13 +12,11 @@ import RestShip
 enum MainRouter: RestShipResource{
   case Features
   case Singles
-  case Recents
   
   var name: String {
     switch self {
     case .Features: return "/features/"
     case .Singles: return "/singles/"
-    case .Recents: return "/recents/"
     }
   }
 }

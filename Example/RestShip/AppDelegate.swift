@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     
-    RestShip.Configuration.BaseURL = "you base URL"
+    RestShip.Configuration.BaseURL = "http://private-0cf28-mymixtapez1.apiary-mock.com"
     
     return true
   }
