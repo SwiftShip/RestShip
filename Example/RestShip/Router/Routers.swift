@@ -10,27 +10,27 @@ import Foundation
 import RestShip
 
 enum MainRouter: RestShipResource{
-  case Features
-  case Singles
+  case features
+  case singles
   
   var name: String {
     switch self {
-    case .Features: return "/features/"
-    case .Singles: return "/singles/"
+    case .features: return "/features/"
+    case .singles: return "/singles/"
     }
   }
 }
 
 enum AlbumRouter: RestShipResource {
-  case Unique(Int)
-  case Tracks(Int)
-  case Track(album: Int, track: Int)
+  case unique(Int)
+  case tracks(Int)
+  case track(album: Int, track: Int)
   
   var name: String {
     switch self {
-    case .Unique(let id): return "/albums/\(id)"
-    case .Tracks(let id): return "/albums/\(id)/tracks"
-    case .Track(let album_id, let track_id): return "/albums/\(album_id)/tracks/\(track_id)"
+    case .unique(let id): return "/albums/\(id)"
+    case .tracks(let id): return "/albums/\(id)/tracks"
+    case .track(let album_id, let track_id): return "/albums/\(album_id)/tracks/\(track_id)"
     }
   }
 }

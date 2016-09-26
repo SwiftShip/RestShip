@@ -1,11 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, ’10.0’
 use_frameworks!
 
-target 'RestShip_Example', :exclusive => true do
+target 'RestShip_Example' do
   pod 'RestShip', :path => '../'
 end
 
-target 'RestShip_Tests', :exclusive => true do
+target 'RestShip_Tests' do
   pod 'RestShip', :path => '../'
 
   
