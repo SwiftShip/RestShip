@@ -16,10 +16,10 @@ class ViewController: UIViewController {
     
     let bodyParams = ["username": "teste123", "passsword": "teste123"]
     
-    RestShip.resource(MainRouter.Features)
+    RestShip.resource(MainRouter.features)
       .method(.POST)
-      .parameterEncoding(.JSON)
-      .queryParams(bodyParams)
+      .parameterEncoding(.json)
+      .queryParams(bodyParams as [String : AnyObject])
       .request({ callback in
         
         print(callback)
@@ -28,17 +28,17 @@ class ViewController: UIViewController {
     
   
     
-    RestShip.resource(MainRouter.Features)
+    RestShip.resource(MainRouter.features)
       .method(.GET)
       .request({ result in
         switch result {
-        case .Success(let object):
+        case .success(let object):
           print(object)
           break
-        case .Error(let error):
+        case .error(let error):
           print(error)
           break
-        case .RefreshTokenError:
+        case .refreshTokenError:
           print("Could not refresh oauth token")
           break
         }
