@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
   - RestShip (0.2.2):
-    - Alamofire
+    - Alamofire (~> 4.0)
 
 DEPENDENCIES:
   - RestShip (from `../`)
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  RestShip: 703e77b35b9a0917cffaa809751828a93851530b
+  RestShip: 882cdcc50253d8889cf3a18a7e88d3ac201bd488
 
 PODFILE CHECKSUM: 22e19237b1c77792d95415bc28c6739bc89cc2e5
 
