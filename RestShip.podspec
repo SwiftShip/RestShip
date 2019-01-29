@@ -17,5 +17,5 @@ This library provide a simplify way to access routes to API resources using meth
 
   s.source_files = 'Source/*'
 
-  s.dependency 'Alamofire'
+  s.dependency 'Alamofire', '~> 4.0'
 end
